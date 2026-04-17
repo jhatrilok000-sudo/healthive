@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthHive 🩺 | AI-Powered Health Ecosystem</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 3D Canvas Background -->
+    <canvas id="3d-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-logo">
+            <span class="logo-icon">🩺</span>
+            <span>HealthHive</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#symptom-checker">Symptom Checker</a></li>
+            <li><a href="#doctors">Doctors</a></li>
+            <li><a href="#health-records">Records</a></li>
+            <li><a href="#reminders">Reminders</a></li>
+            <li><a href="#community">Community</a></li>
+        </ul>
+            <div class="nav-actions">
+                <a href="#" class="search-btn"><i class="fas fa-search"></i></a>
+                <a href="#" class="notification-btn"><i class="fas fa-bell"></i><span class="notification-count" id="notification-count">3</span></a>
+                <a href="login.html" class="profile-btn" id="profileBtn"><i class="fas fa-user-circle"></i></a>
+            </div>
+        <div class="nav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#symptom-checker">Symptom Checker</a></li>
+            <li><a href="#doctors">Doctors</a></li>
+            <li><a href="#health-records">Health Records</a></li>
+            <li><a href="#reminders">Reminders</a></li>
+            <li><a href="#community">Community</a></li>
+        </ul>
+    </div>
+
+    <!-- Emergency Banner -->
+    <div class="emergency-banner">
+        <div class="container">
+            <div class="emergency-content">
+                <i class="fas fa-ambulance"></i>
+                <span>Emergency? Call <strong>108</strong> or <strong>102</strong></span>
+                <a href="#doctors" class="btn-emergency">Book Emergency Appointment</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">AI-Powered Healthcare</div>
+            <h1 class="hero-title">
+                <span class="title-line">Your Health,</span>
+                <span class="title-line accent">Our Priority</span>
+            </h1>
+            <p class="hero-subtitle">Experience the future of healthcare with AI-powered symptom analysis, secure blockchain health records, and instant doctor consultations—all in one platform.</p>
+            <div class="hero-buttons">
+                <a href="#symptom-checker" class="btn btn-primary"><i class="fas fa-stethoscope"></i> Check Symptoms</a>
+                <a href="#doctors" class="btn btn-secondary"><i class="fas fa-user-md"></i> Find Doctors</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">91+</span>
+                    <span class="stat-label">Verified Doctors</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50K+</span>
+                    <span class="stat-label">Happy Patients</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">AI Support</span>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll to Explore</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Quick Actions -->
+    <section class="quick-actions">
+        <div class="container">
+            <div class="quick-actions-grid">
+                <div class="quick-action-card">
+                    <div class="action-icon"><i class="fas fa-heartbeat"></i></div>
+                    <h3>Heart Rate</h3>
+                    <p>Check now</p>
+                </div>
+                <div class="quick-action-card">
+                    <div class="action-icon"><i class="fas fa-pills"></i></div>
+                    <h3>Medications</h3>
+                    <p>Set reminders</p>
+                </div>
+                <div class="quick-action-card">
+                    <div class="action-icon"><i class="fas fa-calendar-check"></i></div>
+                    <h3>Appointments</h3>
+                    <p>View schedule</p>
+                </div>
+                <div class="quick-action-card">
+                    <div class="action-icon"><i class="fas fa-file-medical-alt"></i></div>
+                    <h3>Test Reports</h3>
+                    <p>Upload & analyze</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Symptom Checker Section -->
+    <section id="symptom-checker" class="symptom-checker">
+        <div class="container">
+            <h2 class="section-title">AI Symptom Checker 🧠</h2>
+            <p class="section-subtitle">Describe your symptoms and our AI will analyze them to provide possible conditions</p>
+            
+            <div class="symptom-checker-container">
+                <div class="symptom-input-section">
+                    <div class="input-wrapper">
+                        <i class="fas fa-microphone"></i>
+                        <textarea id="symptom-input" placeholder="Describe your symptoms here... e.g., I have a headache and fever since yesterday..."></textarea>
+                    </div>
+                    <div class="symptom-suggestions">
+                        <span class="suggestion-tag">Headache</span>
+                        <span class="suggestion-tag">Fever</span>
+                        <span class="suggestion-tag">Cough</span>
+                        <span class="suggestion-tag">Fatigue</span>
+                        <span class="suggestion-tag">Nausea</span>
+                        <span class="suggestion-tag">Body Pain</span>
+                    </div>
+                    <button class="btn btn-primary btn-analyze" onclick="analyzeSymptoms()">
+                        <i class="fas fa-brain"></i> Analyze Symptoms
+                    </button>
+                </div>
+                
+                <div class="symptom-results" id="symptom-results">
+                    <div class="result-placeholder">
+                        <i class="fas fa-stethoscope"></i>
+                        <p>Enter your symptoms above and click analyze to get AI-powered insights</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="disclaimer">
+                <i class="fas fa-info-circle"></i>
+                <span>This is an AI-powered tool and should not replace professional medical advice. Always consult a doctor for accurate diagnosis.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctor Consultations Section -->
+    <section id="doctors" class="doctors">
+        <div class="container">
+            <h2 class="section-title">Find & Consult Doctors 👨‍⚕️</h2>
+            <p class="section-subtitle">Book appointments with verified specialists or start a video consultation</p>
+            
+            <div class="doctor-filters">
+                <div class="filter-group">
+                    <select id="specialty-filter">
+                        <option value="">All Specialties</option>
+                        <option value="general">General Physician</option>
+                        <option value="cardiology">Cardiology</option>
+                        <option value="dermatology">Dermatology</option>
+                        <option value="pediatrics">Pediatrics</option>
+                        <option value="orthopedics">Orthopedics</option>
+                        <option value="neurology">Neurology</option>
+                        <option value="gynecology">Gynecology</option>
+                        <option value="psychiatry">Psychiatry</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <select id="location-filter">
+                        <option value="">All Locations</option>
+                        <option value="nearby">Nearby</option>
+                        <option value="online">Online Consultation</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <select id="availability-filter">
+                        <option value="">Any Availability</option>
+                        <option value="today">Available Today</option>
+                        <option value="tomorrow">Available Tomorrow</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="doctors-grid" id="doctors-grid"></div>
+        </div>
+    </section>
+
+    <!-- Health Records Section -->
+    <section id="health-records" class="health-records">
+        <div class="container">
+            <h2 class="section-title">Secure Health Records 🔐</h2>
+            <p class="section-subtitle">Store and manage your medical records securely with blockchain technology</p>
+            
+            <div class="records-dashboard">
+                <div class="records-sidebar">
+                    <div class="record-category active">
+                        <i class="fas fa-file-medical"></i>
+                        <span>Medical Reports</span>
+                        <span class="count">12</span>
+                    </div>
+                    <div class="record-category">
+                        <i class="fas fa-prescription-bottle"></i>
+                        <span>Prescriptions</span>
+                        <span class="count">8</span>
+                    </div>
+                    <div class="record-category">
+                        <i class="fas fa-syringe"></i>
+                        <span>Vaccinations</span>
+                        <span class="count">5</span>
+                    </div>
+                    <div class="record-category">
+                        <i class="fas fa-heart"></i>
+                        <span>Vitals History</span>
+                        <span class="count">24</span>
+                    </div>
+                    <div class="record-category">
+                        <i class="fas fa-x-ray"></i>
+                        <span>Imaging</span>
+                        <span class="count">3</span>
+                    </div>
+                    <button class="btn btn-upload">
+                        <i class="fas fa-cloud-upload-alt"></i> Upload New Record
+                    </button>
+                </div>
+                
+                <div class="records-main">
+                    <div class="records-header">
+                        <h3>Medical Reports</h3>
+                        <div class="record-search">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search records...">
+                        </div>
+                    </div>
+                    
+                    <div class="records-list" id="records-list"></div>
+                </div>
+            </div>
+            
+            <div class="blockchain-info">
+                <div class="blockchain-badge">
+                    <i class="fas fa-cube"></i>
+                    <span>Blockchain Secured</span>
+                </div>
+                <p>Your health records are encrypted and stored on a decentralized blockchain network, ensuring maximum security and privacy.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Health Reminder System Section -->
+    <section id="reminders" class="reminders">
+        <div class="container">
+            <h2 class="section-title">Health Reminders 📅</h2>
+            <p class="section-subtitle">Never miss a checkup or medication with smart AI-powered reminders</p>
+            
+            <div class="reminders-dashboard">
+                <!-- Active Reminders -->
+                <div class="reminders-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-bell"></i> Upcoming Reminders</h3>
+                        <button class="btn-add-reminder" onclick="openReminderModal()">
+                            <i class="fas fa-plus"></i> Add Reminder
+                        </button>
+                    </div>
+                    
+                    <div class="reminders-list" id="active-reminders"></div>
+                </div>
+                
+                <!-- Family Reminders -->
+                <div class="family-reminders-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-users"></i> Family Health</h3>
+                        <button class="btn-add-family" onclick="openFamilyModal()">
+                            <i class="fas fa-user-plus"></i> Add Family Member
+                        </button>
+                    </div>
+                    
+                    <div class="family-members">
+                        <div class="family-member-card">
+                            <div class="member-avatar">
+                                <span>MR</span>
+                            </div>
+                            <div class="member-info">
+                                <h4>Mom (Rajesh)</h4>
+                                <p>Blood Pressure check due</p>
+                            </div>
+                            <button class="btn-manage"><i class="fas fa-cog"></i></button>
+                        </div>
+                        
+                        <div class="family-member-card">
+                            <div class="member-avatar">
+                                <span>SP</span>
+                            </div>
+                            <div class="member-info">
+                                <h4>Dad (Paresh)</h4>
+                                <p>Diabetes test in 3 days</p>
+                            </div>
+                            <button class="btn-manage"><i class="fas fa-cog"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Offers & Deals Section -->
+            <div class="offers-section">
+                <div class="section-header">
+                    <h3><i class="fas fa-tag"></i> Nearby Offers & Deals</h3>
+                    <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="offers-grid" id="offers-grid"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Support Section -->
+    <section id="community" class="community">
+        <div class="container">
+            <h2 class="section-title">Community Support 🤝</h2>
+            <p class="section-subtitle">Connect with others, share experiences, and get support from people who understand</p>
+            
+            <div class="community-features">
+                <div class="community-card">
+                    <div class="community-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Discussion Forums</h3>
+                    <p>Join conversations about health topics, treatments, and recovery stories</p>
+                    <span class="topic-count">1.2k active discussions</span>
+                </div>
+                
+                <div class="community-card">
+                    <div class="community-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <h3>Support Groups</h3>
+                    <p>Connect with people facing similar health challenges</p>
+                    <span class="topic-count">50+ support groups</span>
+                </div>
+                
+                <div class="community-card">
+                    <div class="community-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h3>Ask the Community</h3>
+                    <p>Get answers from experienced members and health experts</p>
+                    <span class="topic-count">5k+ questions answered</span>
+                </div>
+                
+                <div class="community-card">
+                    <div class="community-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <h3>Share Stories</h3>
+                    <p>Share your health journey and inspire others</p>
+                    <span class="topic-count">800+ stories shared</span>
+                </div>
+            </div>
+            
+            <!-- Recent Discussions -->
+            <div class="recent-discussions">
+                <h3>Recent Discussions</h3>
+                <div class="discussion-list">
+                    <div class="discussion-item">
+                        <div class="discussion-avatar">AK</div>
+                        <div class="discussion-content">
+                            <h4>Tips for managing diabetes naturally</h4>
+                            <p>I've been following a strict diet and exercise routine...</p>
+                            <div class="discussion-meta">
+                                <span><i class="fas fa-comment"></i> 24 comments</span>
+                                <span><i class="fas fa-heart"></i> 156 likes</span>
+                                <span>2 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="discussion-item">
+                        <div class="discussion-avatar">SM</div>
+                        <div class="discussion-content">
+                            <h4>Recovery journey after knee surgery</h4>
+                            <p>Sharing my experience with physiotherapy exercises...</p>
+                            <div class="discussion-meta">
+                                <span><i class="fas fa-comment"></i> 18 comments</span>
+                                <span><i class="fas fa-heart"></i> 89 likes</span>
+                                <span>5 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="discussion-item">
+                        <div class="discussion-avatar">RJ</div>
+                        <div class="discussion-content">
+                            <h4>Best hospitals for cardiac care in Delhi</h4>
+                            <p>Looking for recommendations for my father's treatment...</p>
+                            <div class="discussion-meta">
+                                <span><i class="fas fa-comment"></i> 32 comments</span>
+                                <span><i class="fas fa-heart"></i> 67 likes</span>
+                                <span>1 day ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Contact Section -->
+    <section class="emergency-section">
+        <div class="container">
+            <div class="emergency-content-box">
+                <div class="emergency-text">
+                    <h2>Need Immediate Help?</h2>
+                    <p>Our 24/7 emergency support team is always ready to assist you</p>
+                </div>
+                <div class="emergency-actions">
+                    <a href="tel:108" class="emergency-btn ambulance">
+                        <i class="fas fa-ambulance"></i>
+                        <span>Call 108</span>
+                    </a>
+                    <a href="tel:102" class="emergency-btn blood-bank">
+                        <i class="fas fa-tint"></i>
+                        <span>Call 102</span>
+                    </a>
+                    <a href="#" class="emergency-btn support">
+                        <i class="fas fa-headset"></i>
+                        <span>24/7 Support</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Stay Healthy with HealthHive</h2>
+                <p>Get health tips, medicine reminders, and exclusive offers delivered to your inbox</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3> We'd Love to Hear From You</h3>
+                    <p>Have questions about our services or need support? Our team is here to help!</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+                            <div>
+                                <h4>Visit Us</h4>
+                                <p>medical college kota </p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon"><i class="fas fa-phone"></i></span>
+                            <div>
+                                <h4>Call Us</h4>
+                                <p>+91 9229010077</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+                            <div>
+                                <h4>Email Us</h4>
+                                <p>support@healthhive.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <input type="text" name="name" id="name" required placeholder=" ">
+                        <label for="name">Your Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" id="email" required placeholder=" ">
+                        <label for="email">Your Email</label>
+                    </div>
+                    <div class="form-group">
+                        <select name="subject" id="subject" required>
+                            <option value="" disabled selected></option>
+                            <option value="support">Technical Support</option>
+                            <option value="appointment">Appointment Help</option>
+                            <option value="records">Health Records</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <label for="subject">Subject</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" id="message" required placeholder=" "></textarea>
+                        <label for="message">Your Message</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="logo-icon">🩺</span>
+                        <span>HealthHive</span>
+                    </div>
+                    <p>Your AI-powered health ecosystem for better living</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <a href="#symptom-checker">Symptom Checker</a>
+                        <a href="#doctors">Find Doctors</a>
+                        <a href="#health-records">Health Records</a>
+                        <a href="#reminders">Reminders</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="#">About Us</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Press</a>
+                        <a href="#">Blog</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Policy</a>
+                        <a href="#">HIPAA Compliance</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 HealthHive. All rights reserved. Made with ❤️ for better health</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Chatbot -->
+    <div class="chatbot-widget" id="chatbot-widget">
+        <button class="chatbot-toggle" onclick="toggleChatbot()">
+            <i class="fas fa-robot"></i>
+            <span class="chatbot-badge">AI</span>
+        </button>
+        <div class="chatbot-window" id="chatbot-window">
+            <div class="chatbot-header">
+                <div class="chatbot-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="chatbot-title">
+                    <h3>HealthHive Assistant</h3>
+                    <span><span class="online-dot"></span> Online</span>
+                </div>
+                <button class="chatbot-minimize" onclick="toggleChatbot()">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="chatbot-message bot">
+                    <div class="message-content">
+                        <p>Hello! I'm <strong>HealthHive AI Assistant</strong>. I can help you with:</p>
+                        <ul>
+                            <li><i class="fas fa-stethoscope"></i> Symptom analysis</li>
+                            <li><i class="fas fa-user-md"></i> Finding doctors</li>
+                            <li><i class="fas fa-file-medical"></i> Health records</li>
+                            <li><i class="fas fa-bell"></i> Setting reminders</li>
+                            <li><i class="fas fa-question-circle"></i> General health questions</li>
+                        </ul>
+                        <p>How can I help you today?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="chatbot-suggestions">
+                <button class="suggestion-btn" onclick="sendChatMessage('I have a headache')">I have a headache</button>
+                <button class="suggestion-btn" onclick="sendChatMessage('Find a doctor')">Find a doctor</button>
+                <button class="suggestion-btn" onclick="sendChatMessage('Health checkup')">Book checkup</button>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbot-input" placeholder="Type your message..." onkeypress="handleChatKeypress(event)">
+                <button class="send-btn" onclick="sendChatMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reminder Modal -->
+    <div class="modal" id="reminder-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Reminder</h3>
+                <button class="modal-close" onclick="closeReminderModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Reminder Type</label>
+                    <select id="reminder-type">
+                        <option value="checkup">Checkup Reminder</option>
+                        <option value="medication">Medication Reminder</option>
+                        <option value="vaccination">Vaccination</option>
+                        <option value="test">Medical Test</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" id="reminder-title" placeholder="e.g., Annual Health Checkup">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="reminder-description" placeholder="Add details..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" id="reminder-date">
+                </div>
+                <div class="form-group">
+                    <label>Time</label>
+                    <input type="time" id="reminder-time">
+                </div>
+                <div class="form-group">
+                    <label>Priority</label>
+                    <select id="reminder-priority">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" onclick="saveReminder()">
+                    <i class="fas fa-bell"></i> Set Reminder
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Family Member Modal -->
+    <div class="modal" id="family-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Family Member</h3>
+                <button class="modal-close" onclick="closeFamilyModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="family-name" placeholder="Enter name">
+                </div>
+                <div class="form-group">
+                    <label>Relationship</label>
+                    <select id="family-relationship">
+                        <option value="father">Father</option>
+                        <option value="mother">Mother</option>
+                        <option value="spouse">Spouse</option>
+                        <option value="child">Child</option>
+                        <option value="sibling">Sibling</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Date of Birth</label>
+                    <input type="date" id="family-dob">
+                </div>
+                <div class="form-group">
+                    <label>Known Conditions</label>
+                    <textarea id="family-conditions" placeholder="e.g., Diabetes, Hypertension"></textarea>
+                </div>
+                <button class="btn btn-primary" onclick="saveFamilyMember()">
+                    <i class="fas fa-user-plus"></i> Add Member
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Health Record Upload Modal -->
+    <div class="modal" id="record-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Upload Health Record</h3>
+                <button class="modal-close" onclick="closeRecordModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Record Title</label>
+                    <input type="text" id="record-title" placeholder="e.g., Blood Test Report">
+                </div>
+                <div class="form-group">
+                    <label>Record Type</label>
+                    <select id="record-type">
+                        <option value="pdf">PDF</option>
+                        <option value="image">Image</option>
+                        <option value="report">Report</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Source / Lab</label>
+                    <input type="text" id="record-source" placeholder="e.g., Apollo Diagnostics">
+                </div>
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" id="record-date">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="record-description" placeholder="Add record notes..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Upload File</label>
+                    <input type="file" id="record-file" accept=".pdf,image/*" />
+                </div>
+                <button class="btn btn-primary" onclick="saveHealthRecord()">
+                    <i class="fas fa-cloud-upload-alt"></i> Upload Record
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="appointment-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Request an Appointment</h3>
+                <button class="modal-close" onclick="closeAppointmentModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Doctor</label>
+                    <p id="appointment-doctor-name" class="appointment-doctor-name">HealthHive Specialist</p>
+                </div>
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" id="appointment-date">
+                </div>
+                <div class="form-group">
+                    <label>Time</label>
+                    <input type="time" id="appointment-time">
+                </div>
+                <div class="form-group">
+                    <label>Notes</label>
+                    <textarea id="appointment-notes" placeholder="Share your concern or symptoms..."></textarea>
+                </div>
+                <button class="btn btn-primary" id="appointment-submit">
+                    <i class="fas fa-paper-plane"></i> Submit Request
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/firebase-backend.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
